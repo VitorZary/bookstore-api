@@ -18,7 +18,7 @@ public class DBService {
     @Autowired
     private LivroRepository livroRepository;
 
-    public void instanciaBaseDeDados(){
+    public void instanciaBaseDeDados() {
         Categoria cat1 = new Categoria(null, "Informática", "Livro de TI");
         Categoria cat2 = new Categoria(null, "Fantsia", "Livro de Fantasia");
         Categoria cat3 = new Categoria(null, "Terror", "Livro de Terror");
