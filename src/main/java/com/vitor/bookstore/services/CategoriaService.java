@@ -1,6 +1,7 @@
 package com.vitor.bookstore.services;
 
 import com.vitor.bookstore.domain.Categoria;
+import com.vitor.bookstore.dtos.CategoriaDTO;
 import com.vitor.bookstore.repositories.CategoriaRepository;
 import com.vitor.bookstore.services.exceptions.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,13 @@ public class CategoriaService {
 
     public Categoria create(Categoria obj) {
         obj.setId(null);
+        return repository.save(obj);
+    }
+
+    public Categoria update(Integer id, CategoriaDTO objDto) {
+        Categoria obj = findById(id);
+        obj.setNome(objDto.getNome());
+        obj.setDescricao(objDto.getDescricao());
         return repository.save(obj);
     }
 }
