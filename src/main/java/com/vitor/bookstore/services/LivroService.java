@@ -1,5 +1,6 @@
 package com.vitor.bookstore.services;
 
+import com.vitor.bookstore.domain.Categoria;
 import com.vitor.bookstore.domain.Livro;
 import com.vitor.bookstore.repositories.LivroRepository;
 import com.vitor.bookstore.services.exceptions.ObjectNotFoundException;
@@ -39,5 +40,12 @@ public class LivroService {
         newObj.setTitulo(obj.getTitulo());
         newObj.setNome_autor(obj.getNome_autor());
         newObj.setTexto(obj.getTexto());
+    }
+
+    public Livro create(Integer id_cat, Livro obj) {
+        obj.setId(null);
+        Categoria cat = categoriaService.findById(id_cat);
+        obj.setCategoria(cat);
+        return repository.save(obj);
     }
 }
